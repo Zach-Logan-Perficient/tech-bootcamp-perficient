@@ -30,8 +30,8 @@ public class TechbootcampZachApplication {
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			V3Matches matches = restTemplate.getForObject(
-					"https://api.henrikdev.xyz/valorant/v3/matches/na/XXLozengeXX/NA1", V3Matches.class);
-			logger.info("status: " + matches.getStatus() + "; length: " + matches.getData().length + "\nmatch[0]:\n" + matches.getData()[0].toString());
+					"https://api.henrikdev.xyz/valorant/v3/matches/na/XXLozengeXX/NA1?size=11&filter=competitive", V3Matches.class);
+			logger.info("status: " + matches.getStatus() + "; length: " + matches.getData().length + "\nmatch[0]:\n" + matches.toString());
 		};
 	}
 }

@@ -13,7 +13,7 @@ public class KillEvent {
 	private String victim_puuid;
 	private String victim_display_name;
 	private String victim_team;
-	private Location victim_death_loaction;
+	private Location victim_death_location;
 	private String damage_weapon_id;
 	private String damage_weapon_name;
 	private boolean secondary_fire_mode;
@@ -67,11 +67,11 @@ public class KillEvent {
 	public void setVictim_team(String victim_team) {
 		this.victim_team = victim_team;
 	}
-	public Location getVictim_death_loaction() {
-		return victim_death_loaction;
+	public Location getVictim_death_location() {
+		return victim_death_location;
 	}
-	public void setVictim_death_loaction(Location victim_death_loaction) {
-		this.victim_death_loaction = victim_death_loaction;
+	public void setVictim_death_location(Location victim_death_loaction) {
+		this.victim_death_location = victim_death_loaction;
 	}
 	public String getDamage_weapon_id() {
 		return damage_weapon_id;
@@ -109,7 +109,7 @@ public class KillEvent {
 				+ kill_time_in_match + "\",\n\"killer_puuid\":\"" + killer_puuid + "\",\n\"killer_display_name\":\""
 				+ killer_display_name + "\",\n\"killer_team\":\"" + killer_team + "\",\n\"victim_puuid\":\""
 				+ victim_puuid + "\",\n\"victim_display_name\":\"" + victim_display_name + "\",\n\"victim_team\":\""
-				+ victim_team + "\",\n\"victim_death_loaction\":\"" + victim_death_loaction
+				+ victim_team + "\",\n\"victim_death_location\":\"" + victim_death_location
 				+ "\",\n\"damage_weapon_id\":\"" + damage_weapon_id + "\",\n\"damage_weapon_name\":\""
 				+ damage_weapon_name + "\",\n\"secondary_fire_mode\":\"" + secondary_fire_mode
 				+ "\",\n\"player_locations_on_kill\":\"" + Arrays.toString(player_locations_on_kill)

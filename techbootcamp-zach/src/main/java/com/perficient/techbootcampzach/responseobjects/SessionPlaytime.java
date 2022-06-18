@@ -25,4 +25,9 @@ public class SessionPlaytime {
 	public void setMilliseconds(int milliseconds) {
 		this.milliseconds = milliseconds;
 	}
+	@Override
+	public String toString() {
+		return "{\n\"minutes\":\"" + minutes + "\",\n\"seconds\":\"" + seconds + "\",\n\"milliseconds\":\""
+				+ milliseconds + "\"\n}";
+	}
 }

@@ -6,8 +6,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerStats {
 	private AbilityCasts ability_casts;
-	private String playear_puuid;
-	private String palyer_team;
+	private String player_puuid;
+	private String player_display_name;
+	private String player_team;
 	private int damage;
 	private int bodyshots;
 	private int headshots;
@@ -25,17 +26,23 @@ public class PlayerStats {
 	public void setAbility_casts(AbilityCasts ability_casts) {
 		this.ability_casts = ability_casts;
 	}
-	public String getPlayear_puuid() {
-		return playear_puuid;
+	public String getPlayer_puuid() {
+		return player_puuid;
 	}
-	public void setPlayear_puuid(String playear_puuid) {
-		this.playear_puuid = playear_puuid;
+	public void setPlayer_puuid(String playear_puuid) {
+		this.player_puuid = playear_puuid;
 	}
-	public String getPalyer_team() {
-		return palyer_team;
+	public String getPlayer_display_name() {
+		return player_display_name;
 	}
-	public void setPalyer_team(String palyer_team) {
-		this.palyer_team = palyer_team;
+	public void setPlayer_display_name(String player_display_name) {
+		this.player_display_name = player_display_name;
+	}
+	public String getPlayer_team() {
+		return player_team;
+	}
+	public void setPlayer_team(String palyer_team) {
+		this.player_team = palyer_team;
 	}
 	public int getDamage() {
 		return damage;
@@ -105,12 +112,13 @@ public class PlayerStats {
 	}
 	@Override
 	public String toString() {
-		return "{\n\"ability_casts\":\"" + ability_casts + "\",\n\"playear_puuid\":\"" + playear_puuid
-				+ "\",\n\"palyer_team\":\"" + palyer_team + "\",\n\"damage\":\"" + damage + "\",\n\"bodyshots\":\""
-				+ bodyshots + "\",\n\"headshots\":\"" + headshots + "\",\n\"legshots\":\"" + legshots
-				+ "\",\n\"kill_events\":\"" + Arrays.toString(kill_events) + "\",\n\"kills\":\"" + kills
-				+ "\",\n\"score\":\"" + score + "\",\n\"economy\":\"" + economy + "\",\n\"was_afk\":\"" + was_afk
-				+ "\",\n\"was_penalized\":\"" + was_penalized + "\",\n\"stayead_in_spawn\":\"" + stayead_in_spawn
-				+ "\"\n}";
+		return "{\n\"ability_casts\":\"" + ability_casts + "\",\n\"player_puuid\":\"" + player_puuid
+				+ "\",\n\"player_display_name\":\"" + player_display_name + "\",\n\"player_team\":\"" + player_team
+				+ "\",\n\"damage\":\"" + damage + "\",\n\"bodyshots\":\"" + bodyshots + "\",\n\"headshots\":\""
+				+ headshots + "\",\n\"legshots\":\"" + legshots + "\",\n\"kill_events\":\""
+				+ Arrays.toString(kill_events) + "\",\n\"kills\":\"" + kills + "\",\n\"score\":\"" + score
+				+ "\",\n\"economy\":\"" + economy + "\",\n\"was_afk\":\"" + was_afk + "\",\n\"was_penalized\":\""
+				+ was_penalized + "\",\n\"stayead_in_spawn\":\"" + stayead_in_spawn + "\"\n}";
 	}
+	
 }
