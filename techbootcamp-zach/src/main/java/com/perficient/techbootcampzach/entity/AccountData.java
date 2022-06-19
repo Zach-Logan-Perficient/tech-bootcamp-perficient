@@ -1,14 +1,30 @@
-package com.perficient.techbootcampzach.responseobjects;
+package com.perficient.techbootcampzach.entity;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class AccountData {
+	
+	@Id
+	@GeneratedValue
+	private int id;
+	
 	private String puuid;
 	private String region;
 	private long account_level;
 	private String name;
 	private String tag;
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Card card;
 	private String last_update;
 	public String getPuuid() {

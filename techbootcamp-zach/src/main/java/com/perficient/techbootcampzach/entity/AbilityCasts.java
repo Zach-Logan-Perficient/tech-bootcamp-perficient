@@ -1,4 +1,4 @@
-package com.perficient.techbootcampzach.responseobjects;
+package com.perficient.techbootcampzach.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

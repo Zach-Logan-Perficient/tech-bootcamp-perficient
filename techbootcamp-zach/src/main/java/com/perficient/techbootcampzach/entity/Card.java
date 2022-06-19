@@ -1,13 +1,21 @@
-package com.perficient.techbootcampzach.responseobjects;
+package com.perficient.techbootcampzach.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class Card {
 	private String small;
 	private String large;
 	private String wide;
+	@Id
 	private String id;
+	
 	public String getSmall() {
 		return small;
 	}
