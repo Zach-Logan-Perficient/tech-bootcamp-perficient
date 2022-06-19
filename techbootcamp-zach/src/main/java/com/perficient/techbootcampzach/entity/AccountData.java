@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -25,6 +26,7 @@ public class AccountData {
 	private String tag;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Card card;
 	private String last_update;
 	public String getPuuid() {

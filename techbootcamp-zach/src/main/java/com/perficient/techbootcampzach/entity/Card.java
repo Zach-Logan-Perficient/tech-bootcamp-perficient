@@ -2,6 +2,7 @@ package com.perficient.techbootcampzach.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -13,6 +14,10 @@ public class Card {
 	private String small;
 	private String large;
 	private String wide;
+	
+	@OneToOne(mappedBy = "card")
+	private AccountData accountData;
+	
 	@Id
 	private String id;
 	
@@ -41,6 +46,12 @@ public class Card {
 		this.id = id;
 	}
 	
+	public AccountData getAccountData() {
+		return accountData;
+	}
+	public void setAccountData(AccountData accountData) {
+		this.accountData = accountData;
+	}
 	public String toString()
 	{
 		return "small: " + "'" + small + "',\n"
