@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table
+@Table(name = "match_tbl")
 public class Match {
 	@Id
 	@GeneratedValue

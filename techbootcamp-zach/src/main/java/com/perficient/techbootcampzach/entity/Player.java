@@ -1,6 +1,7 @@
 package com.perficient.techbootcampzach.entity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -32,11 +33,15 @@ public class Player {
 	private MatchPlayers matchPlayersBlue;
 	
 	private String puuid;
+	
+	@Column(name = "player_name")
 	private String name;
 	private String tag;
 	private String team;
+	
+	@Column(name = "character_name")
 	private String character;
-	private String player_id;
+	private String party_id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn
@@ -100,11 +105,11 @@ public class Player {
 	public void setCharacter(String character) {
 		this.character = character;
 	}
-	public String getPlayer_id() {
-		return player_id;
+	public String getParty_id_id() {
+		return party_id;
 	}
-	public void setPlayer_id(String player_id) {
-		this.player_id = player_id;
+	public void setParty_id(String party_id) {
+		this.party_id = party_id;
 	}
 	public SessionPlaytime getSession_playtime() {
 		return session_playtime;
@@ -121,7 +126,7 @@ public class Player {
 	@Override
 	public String toString() {
 		return "{\n\"puuid\":\"" + puuid + "\",\n\"name\":\"" + name + "\",\n\"tag\":\"" + tag + "\",\n\"team\":\""
-				+ team + "\",\n\"character\":\"" + character + "\",\n\"player_id\":\"" + player_id
+				+ team + "\",\n\"character\":\"" + character + "\",\n\"player_id\":\"" + party_id
 				+ "\",\n\"session_playtime\":\"" + session_playtime + "\",\n\"behavior\":\"" + behavior + "\"\n}";
 	}
 }
