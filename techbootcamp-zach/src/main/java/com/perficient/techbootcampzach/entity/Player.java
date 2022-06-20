@@ -1,17 +1,75 @@
 package com.perficient.techbootcampzach.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class Player {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn
+	private MatchPlayers matchPlayersAll;
+	
+	@ManyToOne
+	@JoinColumn
+	private MatchPlayers matchPlayersRed;
+	
+	@ManyToOne
+	@JoinColumn
+	private MatchPlayers matchPlayersBlue;
+	
 	private String puuid;
 	private String name;
 	private String tag;
 	private String team;
 	private String character;
 	private String player_id;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private SessionPlaytime session_playtime;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Behavior behavior;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public MatchPlayers getMatchPlayersAll() {
+		return matchPlayersAll;
+	}
+	public void setMatchPlayersAll(MatchPlayers matchPlayersAll) {
+		this.matchPlayersAll = matchPlayersAll;
+	}
+	public MatchPlayers getMatchPlayersRed() {
+		return matchPlayersRed;
+	}
+	public void setMatchPlayersRed(MatchPlayers matchPlayersRed) {
+		this.matchPlayersRed = matchPlayersRed;
+	}
+	public MatchPlayers getMatchPlayersBlue() {
+		return matchPlayersBlue;
+	}
+	public void setMatchPlayersBlue(MatchPlayers matchPlayersBlue) {
+		this.matchPlayersBlue = matchPlayersBlue;
+	}
 	public String getPuuid() {
 		return puuid;
 	}

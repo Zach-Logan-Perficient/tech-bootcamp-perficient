@@ -1,14 +1,50 @@
 package com.perficient.techbootcampzach.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class Economy {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne(mappedBy = "economy")
+	private PlayerStats playerStats;
+	
 	private int loadout_value;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Purchase weapon;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Purchase armor;
 	private int remaining;
 	private int spent;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public PlayerStats getPlayerStats() {
+		return playerStats;
+	}
+	public void setPlayerStats(PlayerStats playerStats) {
+		this.playerStats = playerStats;
+	}
 	public int getLoadout_value() {
 		return loadout_value;
 	}

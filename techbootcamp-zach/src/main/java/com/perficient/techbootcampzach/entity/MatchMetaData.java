@@ -1,8 +1,17 @@
 package com.perficient.techbootcampzach.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class MatchMetaData {
 	private String map;
 	private String game_version;
@@ -13,9 +22,14 @@ public class MatchMetaData {
 	private String mode;
 	private String season_id;
 	private String platform;
+	@Id
 	private String matchid;
 	private String region;
 	private String cluster;
+	
+	@OneToOne(mappedBy = "metadata")
+	private Match match;
+	
 	public String getMap() {
 		return map;
 	}
@@ -87,6 +101,12 @@ public class MatchMetaData {
 	}
 	public void setCluster(String cluster) {
 		this.cluster = cluster;
+	}
+	public Match getMatch() {
+		return match;
+	}
+	public void setMatch(Match match) {
+		this.match = match;
 	}
 	@Override
 	public String toString() {

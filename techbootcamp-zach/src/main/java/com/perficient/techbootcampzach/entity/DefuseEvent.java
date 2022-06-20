@@ -1,14 +1,53 @@
 package com.perficient.techbootcampzach.entity;
 
 import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class DefuseEvent {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne(mappedBy = "defuse_events")
+	private Round round;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Location defuse_location;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private PlayerBasic defused_by;
 	private int defuse_time_in_round;
+	
+	@OneToMany(mappedBy="defuse_events", cascade = CascadeType.ALL)
 	private PlayerLocation[] player_locations_on_defuse;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Round getRound() {
+		return round;
+	}
+	public void setRound(Round round) {
+		this.round = round;
+	}
 	public Location getDefuse_location() {
 		return defuse_location;
 	}

@@ -1,10 +1,31 @@
 package com.perficient.techbootcampzach.entity;
 
 import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class KillEvent {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn
+	private PlayerStats player_stats;
+	
 	private int kill_time_in_round;
 	private int kill_time_in_match;
 	private String killer_puuid;
@@ -13,12 +34,32 @@ public class KillEvent {
 	private String victim_puuid;
 	private String victim_display_name;
 	private String victim_team;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Location victim_death_location;
 	private String damage_weapon_id;
 	private String damage_weapon_name;
 	private boolean secondary_fire_mode;
+	
+	@OneToMany(mappedBy="kill_event", cascade = CascadeType.ALL)
 	private PlayerLocation[] player_locations_on_kill;
+	
+	@OneToMany(mappedBy="kill_event", cascade = CascadeType.ALL)
 	private Assistant[] assistants;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public PlayerStats getPlayer_stats() {
+		return player_stats;
+	}
+	public void setPlayer_stats(PlayerStats player_stats) {
+		this.player_stats = player_stats;
+	}
 	public int getKill_time_in_round() {
 		return kill_time_in_round;
 	}

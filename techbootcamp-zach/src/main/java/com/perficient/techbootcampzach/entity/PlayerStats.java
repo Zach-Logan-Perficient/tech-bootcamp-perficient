@@ -1,10 +1,33 @@
 package com.perficient.techbootcampzach.entity;
 
 import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class PlayerStats {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn
+	private Round round;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private AbilityCasts ability_casts;
 	private String player_puuid;
 	private String player_display_name;
@@ -13,13 +36,31 @@ public class PlayerStats {
 	private int bodyshots;
 	private int headshots;
 	private int legshots;
+	
+	@OneToMany(mappedBy="player_stats", cascade = CascadeType.ALL)
 	private KillEvent[] kill_events;
 	private int kills;
 	private int score;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Economy economy;
 	private boolean was_afk;
 	private boolean was_penalized;
-	private boolean stayead_in_spawn;
+	private boolean stayed_in_spawn;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Round getRound() {
+		return round;
+	}
+	public void setRound(Round round) {
+		this.round = round;
+	}
 	public AbilityCasts getAbility_casts() {
 		return ability_casts;
 	}
@@ -104,11 +145,11 @@ public class PlayerStats {
 	public void setWas_penalized(boolean was_penalized) {
 		this.was_penalized = was_penalized;
 	}
-	public boolean isStayead_in_spawn() {
-		return stayead_in_spawn;
+	public boolean isStayed_in_spawn() {
+		return stayed_in_spawn;
 	}
-	public void setStayead_in_spawn(boolean stayead_in_spawn) {
-		this.stayead_in_spawn = stayead_in_spawn;
+	public void setStayed_in_spawn(boolean stayed_in_spawn) {
+		this.stayed_in_spawn = stayed_in_spawn;
 	}
 	@Override
 	public String toString() {
@@ -118,7 +159,7 @@ public class PlayerStats {
 				+ headshots + "\",\n\"legshots\":\"" + legshots + "\",\n\"kill_events\":\""
 				+ Arrays.toString(kill_events) + "\",\n\"kills\":\"" + kills + "\",\n\"score\":\"" + score
 				+ "\",\n\"economy\":\"" + economy + "\",\n\"was_afk\":\"" + was_afk + "\",\n\"was_penalized\":\""
-				+ was_penalized + "\",\n\"stayead_in_spawn\":\"" + stayead_in_spawn + "\"\n}";
+				+ was_penalized + "\",\n\"stayead_in_spawn\":\"" + stayed_in_spawn + "\"\n}";
 	}
 	
 }

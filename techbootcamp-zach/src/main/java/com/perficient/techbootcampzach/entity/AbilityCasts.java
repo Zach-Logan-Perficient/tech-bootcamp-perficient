@@ -1,13 +1,43 @@
 package com.perficient.techbootcampzach.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class AbilityCasts {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne(mappedBy = "ability_casts")
+	private PlayerStats playerStats;
+	
 	private int c_casts;
 	private int q_casts;
 	private int e_casts;
 	private int x_casts;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public PlayerStats getPlayerStats() {
+		return playerStats;
+	}
+	public void setPlayerStats(PlayerStats playerStats) {
+		this.playerStats = playerStats;
+	}
 	public int getC_casts() {
 		return c_casts;
 	}

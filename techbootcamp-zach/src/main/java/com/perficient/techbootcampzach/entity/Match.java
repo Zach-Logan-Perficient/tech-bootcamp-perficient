@@ -1,14 +1,47 @@
 package com.perficient.techbootcampzach.entity;
 
 import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class Match {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private MatchMetaData metadata;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private MatchPlayers players;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private MatchTeams teams;
+	
+	@OneToMany(mappedBy="match", cascade = CascadeType.ALL)
 	private Round[] rounds;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public MatchMetaData getMetadata() {
 		return metadata;
 	}

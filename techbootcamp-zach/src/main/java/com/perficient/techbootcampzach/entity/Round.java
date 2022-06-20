@@ -1,17 +1,59 @@
 package com.perficient.techbootcampzach.entity;
 
 import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class Round {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn
+	private Match match;
+	
 	private String winning_team;
 	private String end_type;
 	private boolean bomb_planted;
 	private boolean bomb_defused;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private PlantEvent plant_events;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private DefuseEvent defuse_events;
+	
+	@OneToMany(mappedBy="round", cascade = CascadeType.ALL)
 	private PlayerStats[] player_stats;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Match getMatch() {
+		return match;
+	}
+	public void setMatch(Match match) {
+		this.match = match;
+	}
 	public String getWinning_team() {
 		return winning_team;
 	}

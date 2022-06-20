@@ -1,15 +1,55 @@
 package com.perficient.techbootcampzach.entity;
 
 import java.util.Arrays;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Entity
+@Table
 public class PlantEvent {
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne(mappedBy = "plant_events")
+	private Round round;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private Location plant_location;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
 	private PlayerBasic planted_by;
+	
 	private String plant_site;
 	private int plant_time_in_round;
+	
+	@OneToMany(mappedBy="plant_events", cascade = CascadeType.ALL)
 	private PlayerLocation[] player_locations_on_plant;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Round getRound() {
+		return round;
+	}
+	public void setRound(Round round) {
+		this.round = round;
+	}
 	public Location getPlant_location() {
 		return plant_location;
 	}
