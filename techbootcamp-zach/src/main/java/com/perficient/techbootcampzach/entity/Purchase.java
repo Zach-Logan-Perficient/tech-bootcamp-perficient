@@ -1,7 +1,6 @@
 package com.perficient.techbootcampzach.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -16,10 +15,10 @@ public class Purchase {
 	private String id;
 	
 	@OneToOne(mappedBy = "weapon")
-	private PlayerStats playerStatsW;
+	private Economy economyW;
 	
 	@OneToOne(mappedBy = "armor")
-	private PlayerStats playerStatsA;
+	private Economy economyA;
 	
 	private String name;
 	
@@ -29,17 +28,17 @@ public class Purchase {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public PlayerStats getPlayerStatsW() {
-		return playerStatsW;
+	public Economy getEconomyW() {
+		return economyW;
 	}
-	public void setPlayerStatsW(PlayerStats playerStatsW) {
-		this.playerStatsW = playerStatsW;
+	public void setEconomyW(Economy economyW) {
+		this.economyW = economyW;
 	}
-	public PlayerStats getPlayerStatsA() {
-		return playerStatsA;
+	public Economy getEconomyA() {
+		return economyA;
 	}
-	public void setPlayerStatsA(PlayerStats playerStatsA) {
-		this.playerStatsA = playerStatsA;
+	public void setEconomyA(Economy economyA) {
+		this.economyA = economyA;
 	}
 	public String getName() {
 		return name;
