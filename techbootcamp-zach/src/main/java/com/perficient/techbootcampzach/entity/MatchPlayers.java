@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,12 +25,15 @@ public class MatchPlayers {
 	private Match match;
 	
 	@OneToMany(mappedBy="matchPlayersAll", cascade = CascadeType.ALL)
+	@OrderColumn
 	private Player[] all_players;
 	
 	@OneToMany(mappedBy="matchPlayersRed", cascade = CascadeType.ALL)
+	@OrderColumn
 	private Player[] red;
 	
 	@OneToMany(mappedBy="matchPlayersBlue", cascade = CascadeType.ALL)
+	@OrderColumn
 	private Player[] blue;
 	
 	public int getId() {

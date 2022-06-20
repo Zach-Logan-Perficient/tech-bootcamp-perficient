@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,6 +35,7 @@ public class Match {
 	private MatchTeams teams;
 	
 	@OneToMany(mappedBy="match", cascade = CascadeType.ALL)
+	@OrderColumn
 	private Round[] rounds;
 	
 	public int getId() {

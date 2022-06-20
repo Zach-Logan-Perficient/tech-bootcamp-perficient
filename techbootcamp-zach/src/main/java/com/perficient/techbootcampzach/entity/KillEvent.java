@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -43,9 +44,11 @@ public class KillEvent {
 	private boolean secondary_fire_mode;
 	
 	@OneToMany(mappedBy="kill_event", cascade = CascadeType.ALL)
+	@OrderColumn
 	private PlayerLocation[] player_locations_on_kill;
 	
 	@OneToMany(mappedBy="kill_event", cascade = CascadeType.ALL)
+	@OrderColumn
 	private Assistant[] assistants;
 	
 	public int getId() {

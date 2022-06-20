@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -38,6 +39,7 @@ public class PlayerStats {
 	private int legshots;
 	
 	@OneToMany(mappedBy="player_stats", cascade = CascadeType.ALL)
+	@OrderColumn
 	private KillEvent[] kill_events;
 	private int kills;
 	private int score;

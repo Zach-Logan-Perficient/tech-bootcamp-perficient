@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -34,6 +35,7 @@ public class DefuseEvent {
 	private int defuse_time_in_round;
 	
 	@OneToMany(mappedBy="defuse_events", cascade = CascadeType.ALL)
+	@OrderColumn
 	private PlayerLocation[] player_locations_on_defuse;
 	
 	public int getId() {

@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -40,6 +41,7 @@ public class Round {
 	private DefuseEvent defuse_events;
 	
 	@OneToMany(mappedBy="round", cascade = CascadeType.ALL)
+	@OrderColumn
 	private PlayerStats[] player_stats;
 	
 	public int getId() {
