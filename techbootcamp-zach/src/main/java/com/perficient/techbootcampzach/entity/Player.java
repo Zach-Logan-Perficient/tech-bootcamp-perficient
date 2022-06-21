@@ -53,12 +53,6 @@ public class Player {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public MatchPlayers getMatchPlayersAll() {
-		return matchPlayersAll;
-	}
-	public void setMatchPlayersAll(MatchPlayers matchPlayersAll) {
-		this.matchPlayersAll = matchPlayersAll;
-	}
 	public MatchPlayers getMatchPlayersRed() {
 		return matchPlayersRed;
 	}
