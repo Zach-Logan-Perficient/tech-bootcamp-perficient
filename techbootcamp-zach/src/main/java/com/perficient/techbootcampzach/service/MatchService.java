@@ -40,4 +40,8 @@ public class MatchService {
 	public List<Match> getAllMatches() {
 		return repo.findAll();
 	}
+	
+	public List<Match> getMatchesByNameAndMode(String name, String mode) {
+		return repo.findMatchesByNameAndMode(name, mode);
+	}
 }
