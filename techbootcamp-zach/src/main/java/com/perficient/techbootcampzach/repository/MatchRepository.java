@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.perficient.techbootcampzach.entity.Match;
 
-public interface MatchRepository  extends JpaRepository<Match, Integer> {
+public interface MatchRepository extends JpaRepository<Match, Integer> {
 
 }

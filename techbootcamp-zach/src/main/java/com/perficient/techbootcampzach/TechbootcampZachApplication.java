@@ -38,13 +38,13 @@ public class TechbootcampZachApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			V3Matches matches = restTemplate.getForObject(
-					"https://api.henrikdev.xyz/valorant/v3/matches/na/XXLozengeXX/NA1?size=11&filter=unrated", V3Matches.class);
+//			V3Matches matches = restTemplate.getForObject(
+//					"https://api.henrikdev.xyz/valorant/v3/matches/na/CrazedPanda/NA1?size=11&filter=competitive", V3Matches.class);
 //			logger.info("status: " + matches.getStatus() + "; length: " + matches.getData().length + "\nmatch[0]:\n" + matches.toString());
 //			Account Account = restTemplate.getForObject(
 //					"https://api.henrikdev.xyz/valorant/v1/account/XXLozengeXX/NA1", Account.class);
 //			accountDataService.saveAccountData(Account.getData());
-			matchService.saveMatches(matches.getData());
+//			matchService.saveMatches(matches.getData());
 			logger.info("DONE!!!DONE!!!DONE!!!");
 		};
 	}
