@@ -140,12 +140,20 @@ public class KillEvent {
 	}
 	public void setPlayer_locations_on_kill(PlayerLocation[] player_locations_on_kill) {
 		this.player_locations_on_kill = player_locations_on_kill;
+		if (player_locations_on_kill == null) return;
+		for(PlayerLocation PL : player_locations_on_kill) {
+			PL.setKill_event(this);
+		}
 	}
 	public Assistant[] getAssistants() {
 		return assistants;
 	}
 	public void setAssistants(Assistant[] assistants) {
 		this.assistants = assistants;
+		if (assistants == null) return;
+		for(Assistant assistant: assistants) {
+			assistant.setKill_event(this);
+		}
 	}
 	@Override
 	public String toString() {

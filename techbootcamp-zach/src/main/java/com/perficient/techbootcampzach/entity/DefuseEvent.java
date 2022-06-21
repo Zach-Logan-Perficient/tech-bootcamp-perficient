@@ -73,6 +73,10 @@ public class DefuseEvent {
 	}
 	public void setPlayer_locations_on_defuse(PlayerLocation[] player_locations_on_defuse) {
 		this.player_locations_on_defuse = player_locations_on_defuse;
+		if(player_locations_on_defuse == null) return;
+		for(PlayerLocation PL : player_locations_on_defuse) {
+			PL.setDefuse_events(this);
+		}
 	}
 	@Override
 	public String toString() {

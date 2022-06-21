@@ -45,6 +45,7 @@ public class TechbootcampZachApplication {
 //					"https://api.henrikdev.xyz/valorant/v1/account/XXLozengeXX/NA1", Account.class);
 //			accountDataService.saveAccountData(Account.getData());
 			matchService.saveMatches(matches.getData());
+			
 		};
 	}
 }

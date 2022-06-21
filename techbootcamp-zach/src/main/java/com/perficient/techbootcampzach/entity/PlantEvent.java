@@ -81,6 +81,10 @@ public class PlantEvent {
 	}
 	public void setPlayer_locations_on_plant(PlayerLocation[] player_locations_on_plant) {
 		this.player_locations_on_plant = player_locations_on_plant;
+		if (player_locations_on_plant == null) return;
+		for(PlayerLocation PL : player_locations_on_plant) {
+			PL.setPlant_events(this);
+		}
 	}
 	@Override
 	public String toString() {

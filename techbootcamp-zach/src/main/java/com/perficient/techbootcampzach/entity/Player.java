@@ -22,10 +22,6 @@ public class Player {
 	
 	@ManyToOne
 	@JoinColumn
-	private MatchPlayers matchPlayersAll;
-	
-	@ManyToOne
-	@JoinColumn
 	private MatchPlayers matchPlayersRed;
 	
 	@ManyToOne

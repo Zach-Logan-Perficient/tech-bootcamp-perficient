@@ -97,6 +97,10 @@ public class Round {
 	}
 	public void setPlayer_stats(PlayerStats[] player_stats) {
 		this.player_stats = player_stats;
+		if (player_stats == null) return;
+		for(PlayerStats PS : player_stats) {
+			PS.setRound(this);
+		}
 	}
 	@Override
 	public String toString() {

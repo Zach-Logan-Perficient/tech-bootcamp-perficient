@@ -116,6 +116,10 @@ public class PlayerStats {
 	}
 	public void setKill_events(KillEvent[] kill_events) {
 		this.kill_events = kill_events;
+		if (kill_events == null) return;
+		for(KillEvent killEvent : kill_events) {
+			killEvent.setPlayer_stats(this);
+		}
 	}
 	public int getKills() {
 		return kills;

@@ -53,18 +53,30 @@ public class MatchPlayers {
 	}
 	public void setAll_players(Player[] all_players) {
 		this.all_players = all_players;
+		if (all_players == null) return;
+		for(Player player : all_players) {
+			player.setMatchPlayersAll(this);
+		}
 	}
 	public Player[] getRed() {
 		return red;
 	}
 	public void setRed(Player[] red) {
 		this.red = red;
+		if (red == null) return;
+		for(Player player : red) {
+			player.setMatchPlayersRed(this);
+		}
 	}
 	public Player[] getBlue() {
 		return blue;
 	}
 	public void setBlue(Player[] blue) {
 		this.blue = blue;
+		if (blue == null) return;
+		for(Player player : blue) {
+			player.setMatchPlayersBlue(this);
+		}
 	}
 	@Override
 	public String toString() {

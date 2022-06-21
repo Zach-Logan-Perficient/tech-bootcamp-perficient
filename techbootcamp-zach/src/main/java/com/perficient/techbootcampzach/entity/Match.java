@@ -67,6 +67,10 @@ public class Match {
 	}
 	public void setRounds(Round[] rounds) {
 		this.rounds = rounds;
+		if (rounds == null) return;
+		for(Round round : rounds) {
+			round.setMatch(this);
+		}
 	}
 	@Override
 	public String toString() {
