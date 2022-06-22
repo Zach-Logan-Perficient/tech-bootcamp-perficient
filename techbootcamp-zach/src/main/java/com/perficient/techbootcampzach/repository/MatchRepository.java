@@ -14,7 +14,7 @@ public interface MatchRepository extends JpaRepository<Match, Integer> {
 			+ "WHERE meta.mode = :mode AND ( b.name = :name OR r.name = :name )")
 	public List<Match> findMatchesByNameAndMode(@Param("name") String name, @Param("mode") String mode);
 	
-	@Query("SELECT DISTINCT m FROM Match as m JOIN m.players AS p JOIN p.blue AS b JOIN p.red AS r"
+	@Query("SELECT DISTINCT m FROM Match as m JOIN m.players AS p JOIN p.blue AS b JOIN p.red AS r "
 			+ "WHERE b.name = :name OR r.name = :name")
 	public List<Match> findMatchesByName(@Param("name") String name);
 	

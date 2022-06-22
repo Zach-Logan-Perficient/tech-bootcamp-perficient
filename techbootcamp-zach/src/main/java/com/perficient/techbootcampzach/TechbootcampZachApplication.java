@@ -11,8 +11,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 import com.perficient.techbootcampzach.entity.Account;
+import com.perficient.techbootcampzach.entity.Match;
 import com.perficient.techbootcampzach.entity.V3Matches;
 import com.perficient.techbootcampzach.service.AccountDataService;
+import com.perficient.techbootcampzach.service.KillEventService;
 import com.perficient.techbootcampzach.service.MatchService;
 
 @SpringBootApplication
@@ -24,6 +26,9 @@ public class TechbootcampZachApplication {
 	@Autowired
 	MatchService matchService;
 
+	@Autowired
+	KillEventService killService;
+	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public static void main(String[] args) {
@@ -46,7 +51,13 @@ public class TechbootcampZachApplication {
 //			accountDataService.saveAccountData(Account.getData());
 //			matchService.saveMatches(matches.getData());
 			logger.info("DONE!!!DONE!!!DONE!!!");
-			logger.info(Integer.toString(matchService.getMatchesByNameAndMode("CrazedPanda", "competitive").size()));
+//			logger.info(Integer.toString(matchService.getMatches("Slipp3rymonk3y").size()));
+//			logger.info(Integer.toString(killService.getKills("Slipp3rymonk3y").size()));
+//			logger.info(Integer.toString(killService.getSelfKills("Slipp3rymonk3y").size()));
+//			logger.info(Integer.toString(killService.getDeaths("Slipp3rymonk3y").size()));
+			Match m = matchService.getMatches("Slipp3rymonk3y", "competitive").get(0);
+			logger.info(m.getMetadata().getGame_start_patched());
+			logger.info(m.getRounds()[0].getPlayer_stats()[0].getKill_events()[0].toString());
 		};
 	}
 }

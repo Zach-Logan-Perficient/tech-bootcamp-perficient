@@ -37,11 +37,15 @@ public class MatchService {
 		return saveMatches(Arrays.asList(matches));
 	}
 	
-	public List<Match> getAllMatches() {
+	public List<Match> getMatches() {
 		return repo.findAll();
 	}
 	
-	public List<Match> getMatchesByNameAndMode(String name, String mode) {
+	public List<Match> getMatches(String name, String mode) {
 		return repo.findMatchesByNameAndMode(name, mode);
+	}
+	
+	public List<Match> getMatches(String name) {
+		return repo.findMatchesByName(name);
 	}
 }
