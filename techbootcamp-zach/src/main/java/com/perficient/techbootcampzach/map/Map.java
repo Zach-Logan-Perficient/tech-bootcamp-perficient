@@ -20,8 +20,27 @@ public class Map {
 		this.areas = areas;
 	}
 	
-	public HashMap<MapArea, List<KillEvent>> associateKillEventsWithAreas(List<KillEvent> events) {
-		return null;
+	public HashMap<String, List<double[]>> associateKillEventsWithAreaLocations(List<KillEvent> events, String player) {
+		HashMap<String, List<double[]>> associations = new HashMap<String, List<double[]>>();
+		for(KillEvent ke : events) {
+			double[] coords = ke.getCoordsOfPlayer(player);
+			ArrayList<double[]> list = new ArrayList<double[]>();
+			list.add(coords);
+			List<double[]> prev = associations.putIfAbsent(getCallout(coords[0], coords[1]), list);
+			if(prev != null) {
+				prev.add(coords);
+			}
+		}
+		return associations;
+	}
+	
+	public String getCallout(double x, double y) {
+		for(MapArea area: areas) {
+			if(area.contains(x, y)) {
+				return area.getCallout();
+			}
+		}
+		return "NONE";
 	}
 	
 	public void addArea(MapArea area) {
@@ -39,6 +58,15 @@ public class Map {
 	}
 	public void setAreas(List<MapArea> areas) {
 		this.areas = areas;
+	}
+	public List<String> getCallouts() {
+		List<String> callouts = new ArrayList<String>();
+		for(MapArea area : areas) {
+			if(!callouts.contains(area.getCallout())) {
+				callouts.add(area.getCallout());
+			}
+		}
+		return callouts;
 	}
 	
 }

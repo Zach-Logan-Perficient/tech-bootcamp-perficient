@@ -51,6 +51,15 @@ public class KillEvent {
 	@OrderColumn
 	private Assistant[] assistants;
 	
+	public double[] getCoordsOfPlayer(String player) {
+		for(PlayerLocation loc : player_locations_on_kill) {
+			if(loc.getPlayer_display_name().equals(player+"#NA1")) {
+				return new double[] {loc.getLocation().getX(), loc.getLocation().getY()};
+			}
+		}
+		return new double[] {victim_death_location.getX(), victim_death_location.getY()};
+	}
+	
 	public int getId() {
 		return id;
 	}

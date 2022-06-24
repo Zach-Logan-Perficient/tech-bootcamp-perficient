@@ -5,7 +5,7 @@ public class SquareArea implements MapArea {
 	private String callout;
 	
 	@Override
-	public boolean contains(int x, int y) {
+	public boolean contains(double x, double y) {
 		return x <= this.x && y >= this.y && x >= this.x-h && y <= this.y+w;
 	}
 

@@ -5,6 +5,7 @@ public class Maps {
 	
 	public static void init()
 	{
+		BREEZE = new Map("Breeze");
 		for(Object[] a : BREEZE_AREAS) {
 			BREEZE.addArea(new SquareArea((Integer)a[0]*100, (Integer)a[1]*100, (Integer)a[2]*100, (Integer)a[3]*100, (String)a[4]));
 		}
